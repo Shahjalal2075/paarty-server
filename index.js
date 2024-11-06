@@ -40,6 +40,12 @@ async function run() {
       const product = await programs.find(query).toArray();
       res.send(product);
     })
+    app.get('/programs/:id', async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: new ObjectId(id) }
+      const product = await programs.findOne(query);
+      res.send(product);
+    })
 
     /* app.get('/user-list', async (req, res) => {
       const cursor = users.find()
